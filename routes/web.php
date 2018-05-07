@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'LinkController@index');
+Route::get('/', 'LinkController@index')->name('home');
+
+Route::post('/', 'LinkController@store');
 
 Route::get('/{hash}', 'LinkController@show');
 
-Route::post('/', 'LinkController@store');

@@ -25,11 +25,12 @@ class LinkController extends Controller
 
         $url = request('url');
         $hash = str_random(4);
+        $linker = new Link;
 
-        Link::addLink(
+        $linker->addLink(
             compact('url', 'hash')
         );
 
-        return redirect('home')->with('hash', $hash);
+        return redirect()->route('home')->with('hash', $hash);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
 
-    protected $fillable = ['url'];
+    protected $fillable = ['url', 'hash'];
 
     public function addLink(array $link)
     {
