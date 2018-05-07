@@ -14,7 +14,8 @@ class LinkController extends Controller
 
     public function show($hash)
     {
-        return Link::where('hash', '=', $hash)->get();
+        $link = Link::where('hash', '=', $hash)->get()->first();
+        return redirect()->away($link->url);
     }
 
     public function store(Link $link)
@@ -23,10 +24,10 @@ class LinkController extends Controller
             'url' =>  'required'
         ]);
 
-        $url = request('url');
+        $url = (request('url')) ? (parse_url(request('url'), PHP_URL_SCHEME) ? '' : 'http://') . request('url') : '';
         $hash = str_random(4);
-        $linker = new Link;
 
+        $linker = new Link;
         $linker->addLink(
             compact('url', 'hash')
         );
