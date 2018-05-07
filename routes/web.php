@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LinkController@index');
+
+Route::get('/{hash}', 'LinkController@show');
+
+Route::post('/', 'LinkController@store');
