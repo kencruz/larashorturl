@@ -21,3 +21,11 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Link::class, function (Faker $faker) {
+    return [
+        'url' => $faker->url,
+        'hash' => str_random(4),
+    ];
+});
+
