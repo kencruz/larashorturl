@@ -16,4 +16,9 @@ class Link extends Model
             'hash' => $link['hash'],
         ]);
     }
+
+    public function getUrl($hash)
+    {
+        return Link::where('hash', $hash)->get()->first()->url;
+    }
 }

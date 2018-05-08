@@ -12,10 +12,11 @@ class LinkController extends Controller
         return view('index');
     }
 
-    public function show($hash)
+    public function show(Link $link)
     {
-        $link = Link::where('hash', '=', $hash)->get()->first();
-        return redirect()->away($link->url);
+        return redirect()->away(
+            $link->getUrl(request('hash'))
+        );
     }
 
     public function store(Link $link)
